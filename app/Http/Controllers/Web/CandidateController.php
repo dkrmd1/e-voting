@@ -116,6 +116,8 @@ class CandidateController extends Controller implements HasMiddleware
             
             $candidate->delete();
 
+            Candidate::whare('sort_order', '>', $candidate->sort_order)->decrement('sort_order');
+
             return redirect()->route('app.candidate.index')->with('succes', 'Candidate created successfully.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'Failed to create candidate, ' . $e->getMessage()]);
