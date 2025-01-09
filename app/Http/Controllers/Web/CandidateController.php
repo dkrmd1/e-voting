@@ -69,7 +69,9 @@ class CandidateController extends Controller implements HasMiddleware
      */
     public function show(string $id)
     {
-        //
+        $candidate = Candidate::findOrFail($id);
+
+        return view('pages.app.candidate.show', compact('candidate'));
     }
 
     /**
@@ -116,11 +118,11 @@ class CandidateController extends Controller implements HasMiddleware
             
             $candidate->delete();
 
-            Candidate::whare('sort_order', '>', $candidate->sort_order)->decrement('sort_order');
+            Candidate::where('sort_order', '>', $candidate->sort_order)->decrement('sort_order');
 
-            return redirect()->route('app.candidate.index')->with('succes', 'Candidate created successfully.');
+            return redirect()->route('app.candidate.index')->with('succes', 'Candidate deleted successfully.');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to create candidate, ' . $e->getMessage()]);
+            return back()->withErrors(['error' => 'Failed to delete candidate, ' . $e->getMessage()]);
         }
     }
 }
