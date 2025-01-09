@@ -20,10 +20,19 @@
     @endcan
 
     @can('candidate-view')
-        <li class="nav-item {{ request()->is('app/candidate') ? 'active' : '' }}">
+        <li class="nav-item {{ request()->is('app/candidate*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('app.candidate.index') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Candidate</span></a>
+        </li>
+    @endcan
+
+    
+    @can('voter-view')
+        <li class="nav-item {{ request()->is('app/voter*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('app.voter.index') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Voter</span></a>
         </li>
     @endcan
 
