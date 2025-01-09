@@ -19,6 +19,14 @@
         </li>
     @endcan
 
+    @can('candidate-view')
+        <li class="nav-item {{ request()->is('app/candidate') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('app.candidate.index') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Candidate</span></a>
+        </li>
+    @endcan
+
     @canany(['user-view', 'role-view'])
         <li class="nav-item {{ request()->is('app/users*') || request()->is('app/roles*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserManagement"
