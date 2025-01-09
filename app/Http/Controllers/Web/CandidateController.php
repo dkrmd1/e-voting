@@ -111,6 +111,14 @@ class CandidateController extends Controller implements HasMiddleware
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $candidate = Candidate::findOrFail($id);
+            
+            $candidate->delete();
+
+            return redirect()->route('app.candidate.index')->with('succes', 'Candidate created successfully.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Failed to create candidate, ' . $e->getMessage()]);
+        }
     }
 }

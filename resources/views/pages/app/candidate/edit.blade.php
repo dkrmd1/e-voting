@@ -18,7 +18,8 @@
                     <h6 class="m-0 font-weight-bold text-primary">Edit Candidate</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('app.candidate.update', $candidate->id) }}" method="POST">
+                    <form action="{{ route('app.candidate.update', $candidate->id) }}" method="POST" 
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
