@@ -23,7 +23,7 @@
                             <tr>
                                 <th>Image</th>
                                 <td>
-                                    <image src={{ asset('storage/' . $candidate->image)}}"width=100" alt="image">
+                                    <image src="{{ asset('storage/' . $candidate->image) }}" width="100" alt="image">
                                 </td>
                             </tr>
                             <tr>
